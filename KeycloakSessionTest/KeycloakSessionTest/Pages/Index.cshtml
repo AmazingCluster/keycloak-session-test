@@ -1,0 +1,57 @@
+﻿@page
+@using Microsoft.AspNetCore.Authorization;
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+@if (Model.Token != null)
+{
+    <h3>Token</h3>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th></th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>Issued</td>
+            <td />
+            <td>@Model.Token.ValidFrom.ToString()</td>
+        </tr>
+        <tr>
+            <td>Expires</td>
+            <td />
+            <td>@Model.Token.ValidTo.ToString()</td>
+        </tr>
+    </table>
+
+    <br />
+}
+
+@if (Model.Ticket != null)
+{
+    <h3>Ticket</h3>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th></th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>Issued</td>
+            <td/>
+            <td style="overflow-wrap:anywhere">@Model.Ticket.Properties.IssuedUtc</td>
+        </tr>
+        <tr>
+            <td>Expires</td>
+            <td />
+            <td style="overflow-wrap:anywhere">@Model.Ticket.Properties.ExpiresUtc</td>
+        </tr>
+    </table>
+}
